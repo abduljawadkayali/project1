@@ -25,7 +25,14 @@
     "Kindergarten Staff":" كادر الروضة ",
     "Primary School Staff":"كادر المدرسة الإبتدائية ",
     "Preparatory School Staff":" كادر المدرسة الإعدادية ",
-    "High school Staff":" كادر المدرسة الثانوية "
+    "High school Staff":" كادر المدرسة الثانوية ",
+    "teacher":"استاذ",
+    "student":"طالب",
+    "Username":"اسم المستخدم",
+    "Password":"كلمة المرور",
+    "Keep me Signed in":"  تذكرني",
+    "Forgot Password?":"هل نسيت كلمة المرور",
+    "Sign in":"تسجيل الدخول"
     
 
 

@@ -11,82 +11,40 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('home', function () {
-    return view('home');
-});
+Route::get('/', 'PagesController@home');
+Route::get('home', 'PagesController@home');
 
 
-Route::get('kg', function () {
-    return view('kg');
-});
-Route::get('firstschool', function () {
-    return view('firstschool');
-});
-Route::get('secschool', function () {
-    return view('secschool');
-});
-Route::get('highschool', function () {
-    return view('highschool');
-});
-Route::get('users', function () {
-    return view('table');
-});
-Route::get('login', function () {
-    return view('login');
-});
-Route::get('test', function () {
-    return view('test');
-});
+Route::get('kg', 'PagesController@kg');
+Route::get('firstschool','PagesController@firstschool');
+Route::get('secschool', 'PagesController@secschool');
+Route::get('highschool', 'PagesController@highschool');
 
-Route::get('mangement', function () {
-    return view('mangement');
-});
+Route::get('login', 'PagesController@login');
+Route::get('test', 'PagesController@test');
 
-Route::get('kgmang', function () {
-    return view('kgmang');
-});
+Route::get('mangement', 'PagesController@mangement');
 
-Route::get('firstmang', function () {
-    return view('firstmang');
-});
+Route::get('kgmang', 'PagesController@kgmang');
 
-Route::get('secondmang', function () {
-    return view('secondmang');
-});
+Route::get('firstmang', 'PagesController@firstmang');
 
-Route::get('highmang', function () {
-    return view('highmang');
-});
+Route::get('secondmang', 'PagesController@secondmang');
 
-Route::get('club', function () {
-    return view('club');
-});
+Route::get('highmang', 'PagesController@highmang');
+
+Route::get('club', 'PagesController@club');
 
 
-Route::get('bus', function () {
-    return view('bus');
-});
-
-Route::get('service', function () {
-    return view('service');
-});
+Route::get('bus', 'PagesController@bus');
+Route::get('service', 'PagesController@service');
 
 
-Route::get('interviewofice', function () {
-    return view('interviewofice');
-});
+Route::get('interviewofice', 'PagesController@interviewofice');
 
 
-Route::get('conectus', function () {
-    return view('conectus');
-});
+Route::get('conectus', 'PagesController@conectus');
 
 
 
-Route::get('/name', 'PagesController@index');
-Route::get('/news', 'PagesController@news');
-Route::get('/aboutus', 'PagesController@aboutus');
 

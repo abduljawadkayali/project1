@@ -1,70 +1,74 @@
-  @include ('includes.navbar')
+@include ('includes.navbar')
+<html>
+<head>
+
+<link rel="stylesheet" href="login.css">
 
 
-<style type="text/css">
-	body {
-		color: #fff;
-		background: #ffffff;
-	}
-	.form-control {
-		min-height: 41px;
-		background: #f2f2f2;
-		box-shadow: none !important;
-		border: transparent;
-	}
-	.form-control:focus {
-		background: #e2e2e2;
-	}
-	.form-control, .btn {        
-        border-radius: 2px;
-    }
-	.login-form {
-		width: 450px;
-		margin: 30px auto;
-		text-align: center;
-	}
-	.login-form h2 {
-        margin: 10px 0 25px;
-    }
-    .login-form form {
-		color: #7a7a7a;
-		border-radius: 3px;
-    	margin-bottom: 15px;
-        background: #fff;
-        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 30px;
-    }
-    .login-form .btn {        
-        font-size: 16px;
-        font-weight: bold;
-		background: #3598dc;
-		border: none;
-        outline: none !important;
-    }
-	
-</style>
 </head>
 <body>
 
-
-<div class="login-form">
-    <form action="log" method="post">
-        <h2 class="text-center"> تسجيل الدخول</h2>   
-        <div class="form-group has-error">
-        	<input type="text" class="form-control" name="username" placeholder="اسم المستخدم" required="required">
-
-        </div>
+<div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in"><label for="tab-1" class="tab">@lang("teacher")</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">@lang("student")</label>
+		
+		<div class="login-form">
 	
-		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="كلمة المرور" required="required">
-        </div>
-		        
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block">تسجيل دخول</button>
-        </div>
-        <p><a href="#">نسيت كلمة المرور ؟</a></p>
-    </form>
-</div>
-@include ('includes.footer')
+</br>
+
+		<div class="sign-in-htm">
+				<div class="group">
+					<label for="user" class="label">@lang("Username")</label>
+					<input id="user" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">@lang("Password")</label>
+					<input id="pass" type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+					<input id="check" type="checkbox" class="check" checked>
+					<label for="check"><span class="icon"></span>@lang("Keep me Signed in")</label>
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="@lang('Sign in')">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="#forgot">@lang("Forgot Password?")</a>
+				</div>
+			</div>
+			<div class="sign-up-htm">
+				<div class="group">
+					<label for="user" class="label">@lang("Username")</label>
+					<input id="user" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">@lang("Password")</label>
+					<input id="pass" type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+					<input id="check1" type="checkbox" class="check1" checked>
+					<label for="check1"><span class="icon"></span>@lang("Keep me Signed in")</label>
+				</div>
+				
+				<div class="group">
+					<input type="submit" class="button" value="@lang('Sign in')" >
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="#forgot">@lang("Forgot Password?")</a>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+ </div>
+
+ </br>	
+
 </body>
 </html>                            
+@include ('includes.footer')
