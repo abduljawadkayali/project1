@@ -42,7 +42,12 @@
       <header class="nav-holder make-sticky">
         <div id="navbar" role="navigation" class="navbar navbar-expand-lg" >
         
-        <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
+        <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggler btn-template-outlined">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <i class="fa fa-align-justify"></i></button>
         
         
         
@@ -52,7 +57,8 @@
           <div id="navigation" class="navbar-collapse collapse">
             <ul class="nav navbar-nav ">            
               
-              <li class="nav-item login"><a href="login" class="login-btn"><i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block"> @lang("Login")</span> <b class="caret"></b></a> </li>             
+              <li class="nav-item login"><a href="login" class="login-btn"><i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block"> @lang("Login")</span> <b class="caret"></b></a> </li>    
+                       
             </ul>
           </div>
             <div id="navigation" class="navbar-collapse collapse">
@@ -97,8 +103,8 @@
 
                   </ul>
                 </li>
-                <!-- ========== Contact dropdown end ==================-->
-                 <li class="nav-item "><a href="/home" >@lang("home") <b class="caret"></b></a> </li>
+               
+                 <li class="nav-item "><a href="welcome" >@lang("home") <b class="caret"></b></a> </li>
               </ul>
 
               
@@ -107,8 +113,11 @@
             
           </div>
         </div>
+        
       </header>
       <!-- Navbar End-->
+
+      @include ('includes.messages')
 
     <!-- Javascript files-->
     <script src="https://d19m59y37dris4.cloudfront.net/universal/2-0-2/vendor/jquery/jquery.min.js"></script>
@@ -123,6 +132,7 @@
     <script src="https://d19m59y37dris4.cloudfront.net/universal/2-0-2/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/universal/2-0-2/vendor/jquery.scrollto/jquery.scrollTo.min.js"></script>
     <script src="https://d19m59y37dris4.cloudfront.net/universal/2-0-2/js/front.js"></script>
+
     <script>
     $('ul.nav li.dropdown').hover(function() {
   $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
@@ -130,5 +140,6 @@
   $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
 });
 </script>
+
   </body>
 </html>

@@ -24,6 +24,7 @@
                                 @enderror
                             </div>
                         </div>
+                        
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -38,6 +39,51 @@
                                 @enderror
                             </div>
                         </div>
+       
+
+                     <!--       <div class="form-group row">
+                                <label for="state" class="col-md-4 col-form-label text-md-right">{{ __('State') }}</label>
+                                <div class="col-md-6">
+                                <input id="state" type="text" class="form-control @error('state') is-invalid @enderror" name="state" required >
+                                @error('state')
+                                <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                </div>
+                                </div>
+                      
+
+
+                                <div class="form-group row">
+                                    <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+                                    <div class="col-md-6">
+                                    <input id="state" type="text" class="form-control @error('role') is-invalid @enderror" name="role" required >
+                                    @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                    </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <label for="status_id" class="col-md-4 col-form-label text-md-right">{{ __('Status_id') }}</label>
+                                        <div class="col-md-6">
+                                        <input id="status_id" type="text" class="form-control @error('status_id') is-invalid @enderror" name="status_id" required >
+                                        @error('status_id')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        </div>
+                                        </div>
+      -->
+
+
+
+
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>

@@ -10,68 +10,72 @@ class PagesController extends Controller
         return view('home');
     }
 
+    public function welcome(){
+        return view('pages.welcome');
+    }
+
     public function kg(){
-        return view('kg');
+        return view('pages.kg');
     }
 
     public function firstschool(){
-        return view('firstschool');
+        return view('pages.firstschool');
     }
     
     public function secschool(){
-        return view('secschool');
+        return view('pages.secschool');
     }
 
     public function highschool(){
-        return view('highschool');
+        return view('pages.highschool');
     }
 
     public function login(){
-        return view('login');
+        return view('pages.tstt');
     }
 
     public function mangement(){
-        return view('mangement');
+        return view('pages.mangement');
     }
 
     public function kgmang(){
-        return view('kgmang');
+        return view('pages.kgmang');
     }
 
     public function firstmang(){
-        return view('firstmang');
+        return view('pages.firstmang');
     }
 
     public function secondmang(){
-        return view('secondmang');
+        return view('pages.secondmang');
     }
 
     public function highmang(){
-        return view('highmang');
+        return view('pages.highmang');
     }
 
     public function club(){
-        return view('club');
+        return view('dashbored.rtl');
     }
     
     public function bus(){
-        return view('bus');
+        return view('pages.bus');
     }
 
     public function service(){
-        return view('service');
+        return view('pages.service');
     }
     
     public function interviewofice(){
-        return view('interviewofice');
+        return view('pages.interviewofice');
     }
 
     public function conectus(){
-        return view('conectus');
+        return view('pages.conectus');
     }
   
     public function test(){
-        return view('test');
+        return view('pages.test');
     }
     
         

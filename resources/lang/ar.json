@@ -17,7 +17,7 @@
     "High school":" المدرسة الثانوية ",
     "Our departments":" أقسامنا ",
     "Future Generation Private Schools":" مدارس جيل المستقبل الخاصة ",
-    "Quick links":" روابط سريعة ",
+    "Quick links":" روابط   سريعة ",
     "whatsup":" واتس اب ",
     "youtube":" يوتيوب ",
     "facebook":" فيسبوك ",
@@ -28,11 +28,50 @@
     "High school Staff":" كادر المدرسة الثانوية ",
     "teacher":"استاذ",
     "student":"طالب",
+    "admin":"اداري",
     "Username":"اسم المستخدم",
     "Password":"كلمة المرور",
     "Keep me Signed in":"  تذكرني",
     "Forgot Password?":"هل نسيت كلمة المرور",
-    "Sign in":"تسجيل الدخول"
+    "Sign in":"تسجيل الدخول",
+    "Enter password" :"أدخل كلمة المرور",
+    "Enter username" :"أدخل اسم المستخدم",
+    "dashbored" :  " لوحة التحكم ",
+    "Create New Post":"أنشئ منشور جديد",
+    "Edit Post":"تعديل المنشور",
+    "Posts":"المنشورات",
+    "Page":"الصفحة",
+    "Edit":"تعديل",
+    "Assign Permission to Roles":"أضف المهمة للمسؤوليات",
+    "Add Permission":"أضف مهمة",
+    "Available Permissions":"المهام المتاحة",
+
+    "Add Role":"أضف مسؤولية",
+    "Edit Role:":"عدل المسؤولية :",
+    "Assign Permissions":"اربط المهام",
+    "Roles":"المسؤوليات",
+    "Users":"المستخدمين",
+    "Permissions":"المهام",
+    "Operation":"العملية",
+    "Add User":"أضف مستخدم",
+    "Delete":"حذف",
+    "User Administration":"لوحة تحكم المستخدمين",
+     "Name":"الاسم",
+     "Role":"المسؤولية",
+     "Email":"الايميل",
+     "Date/Time Added":"زمان / تاريخ الاضافة",
+     "User Roles":"مسؤليات المستخدم",
+     "Operations":"الخيارات",
+     "Confirm Password":"تأكيد كلمة المرور",
+   "Add":"أضف",
+   "Give Role":"امنح مسؤولية",
+   "Role Name":"اسم المسؤولية",
+   "Permission Name":"اسم المهمة"
+
+    
+    
+    
+   
     
 
 

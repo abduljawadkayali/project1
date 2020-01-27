@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', 'PagesController@home');
-Route::get('home', 'PagesController@home');
 
 
+
+Route::get('welcome', 'PagesController@welcome');
 Route::get('kg', 'PagesController@kg');
 Route::get('firstschool','PagesController@firstschool');
 Route::get('secschool', 'PagesController@secschool');
@@ -45,6 +45,19 @@ Route::get('interviewofice', 'PagesController@interviewofice');
 
 Route::get('conectus', 'PagesController@conectus');
 
+Route::resource('posts', 'PostsController');
+
+Route::get('/', 'HomeController@index');
+
+Auth::routes();
+if (Auth::check()) {
+    Route::get('/', 'HomeController@Dashbored');}
 
 
 
+
+Route::resource('users', 'UserController');
+
+Route::resource('roles', 'RoleController');
+
+Route::resource('permissions', 'PermissionController');

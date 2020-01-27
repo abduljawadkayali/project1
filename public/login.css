@@ -8,6 +8,7 @@ body{
     
 }
 
+
 *,:after,:before{box-sizing:border-box}
 .clearfix:after,.clearfix:before{content:'';display:table}
 .clearfix:after{clear:both;display:block}
@@ -19,7 +20,7 @@ a{color:#fff;text-decoration:none}
 	width:100%;
 	margin:auto;
 	max-width:525px;
-	min-height:525px;
+	min-height:600px;
 	position:relative;
     background:rgb(81, 138, 81);
     border-radius:25px;
@@ -87,13 +88,28 @@ a{color:#fff;text-decoration:none}
     transform-style:preserve-3d;
     
 }
+
+
+.asd{
+    background-color: aquamarine !important;
+    text-align: center !important;
+}
+
+
 .login-form .group{
     margin-bottom:15px;
     
      
 }
+
+.login-form .group .input
+{
+	width:100%;
+	color:#000;
+	
+    display:block;
+}
 .login-form .group .label,
-.login-form .group .input,
 .login-form .group .button{
 	width:100%;
 	color:#fff;
@@ -168,7 +184,7 @@ a{color:#fff;text-decoration:none}
 	transform:scale(0) rotate(0);
 }
 .login-form .group .check:checked + label{
-	color:#fff;
+	color:white;
 }
 .login-form .group .check:checked + label .icon{
 	background:rgba(41, 6, 197, 0.5);
@@ -180,17 +196,17 @@ a{color:#fff;text-decoration:none}
 	transform:scale(1) rotate(-45deg);
 }
 .login-form .group .check + label{
-	color:#000;
+	color:black;
 
 }
 .login-form .group .check1 + label{
-	color:#000;
+	color:black;
 
 }
 
 
 .login-form .group .check1:checked + label{
-	color:#fff;
+	color:w\;
 }
 .login-form .group .check1:checked + label .icon{
 	background:rgba(41, 6, 197, 0.5);
@@ -215,8 +231,8 @@ a{color:#fff;text-decoration:none}
 }
 
 .foot-lnk{
-    text-align:center;
-    color: #fff;
+    text-align:center !important;
+    color: #fff !important;
     
    
 }
@@ -230,8 +246,36 @@ a{color:#fff;text-decoration:none}
 	font-weight: bolder;  
 
 }
+.radio-custom:checked ~ label {
+  color: white;
+}
+.rad{
+	visibility: hidden;
+}
+label {
+  display: block;
+  flex: 1;
+  font-weight: bolder;
+  font-size: larger; 
+}
 
+.input-group {
+	
+    float: right !important;
+    direction: rtl !important;
+  display: block;
+ 
+}
 
+.text-group-field {
+  padding: 10px;
+}
+
+.inner-block {
+  position: relative;
+  display: hidden;
+  flex-direction: row-reverse;
+}
 .input,
 .label{    
 

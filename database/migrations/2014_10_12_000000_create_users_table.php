@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use App\User;
 class CreateUsersTable extends Migration
 {
     /**
@@ -22,7 +22,14 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-    }
+
+        $user = new User();
+        $user->name="asd";
+        $user->email="asd@asd.asd";
+        $user->password=Hash::make("asdasd");
+       // dd($user);
+        $user->save();
+     }
 
     /**
      * Reverse the migrations.
