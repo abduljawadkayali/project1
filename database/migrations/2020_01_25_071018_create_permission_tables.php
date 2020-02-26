@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\User;
+use Spatie\Permission\Models\Permission;
 
 class CreatePermissionTables extends Migration
 {
@@ -21,6 +23,8 @@ class CreatePermissionTables extends Migration
             $table->string('name');
             $table->string('guard_name');
             $table->timestamps();
+
+ 
         });
 
         Schema::create($tableNames['roles'], function (Blueprint $table) {
@@ -28,6 +32,7 @@ class CreatePermissionTables extends Migration
             $table->string('name');
             $table->string('guard_name');
             $table->timestamps();
+            
         });
 
         Schema::create($tableNames['model_has_permissions'], function (Blueprint $table) use ($tableNames, $columnNames) {
@@ -82,6 +87,19 @@ class CreatePermissionTables extends Migration
         app('cache')
             ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)
             ->forget(config('permission.cache.key'));
+
+
+         $permission = Permission::create(['name' => 'isAdmin']);
+         $user=User::findOrFail(1);
+         $user->givePermissionTo('isAdmin');
+
+         
+         $permission = Permission::create(['name' => 'Administer roles & permissions']);
+         $user=User::findOrFail(1);
+         $user->givePermissionTo('isAdmin');
+
+         $permission = Permission::create(['name' => 'Designer']);
+         $permission = Permission::create(['name' => 'Editor']);
     }
 
     /**

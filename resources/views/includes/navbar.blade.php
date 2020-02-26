@@ -32,7 +32,10 @@
     <link rel="apple-touch-icon" sizes="120x120" href="https://d19m59y37dris4.cloudfront.net/universal/2-0-2/img/apple-touch-icon-120x120.png">
     <link rel="apple-touch-icon" sizes="144x144" href="https://d19m59y37dris4.cloudfront.net/universal/2-0-2/img/apple-touch-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="https://d19m59y37dris4.cloudfront.net/universal/2-0-2/img/apple-touch-icon-152x152.png">
-   
+   <style>
+   *{
+    letter-spacing: 0!important;
+   }</style>
   </head>
   <body>
     <div id="all">
@@ -52,15 +55,63 @@
         
         
           <div class="container-fluid">
-          
-          
-          <div id="navigation" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav ">            
+            <ul class="navbar-nav mr-auto">
+              @if(!(Auth::guard('web')->check() || Auth::guard('teachers')->check() ||Auth::guard('students')->check()))
+              <li class="nav-item">
+                
+                <li class="nav-item login"><a href="/Student/StudentLogin" class="login-btn"><i class="fa fa-sign-in"></i>@lang("Login")<span class="d-none d-md-inline-block"></span> <b class="caret"></b></a> </li>    
               
-              <li class="nav-item login"><a href="login" class="login-btn"><i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block"> @lang("Login")</span> <b class="caret"></b></a> </li>    
-                       
-            </ul>
-          </div>
+              </li>
+              
+            @else
+            <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                @if(Auth::guard('web')->check())
+                {{ Auth::user()->name }}
+                @elseif(Auth::guard('teachers')->check())
+                {{ Auth::guard('teachers')->user()->name }}
+                @elseif(Auth::guard('students')->check())
+                {{ Auth::guard('students')->user()->name }}
+                @endif
+                
+                <span class="caret"></span>
+              </a>
+        
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+               
+                <a class="nav-link"
+                @if(Auth::guard('web')->check())
+               
+                href="{{ route('login') }}"
+                 @elseif(Auth::guard('teachers')->check())
+                 href="{{ route('TeacherHome.index') }}"
+                 @elseif(Auth::guard('students')->check())
+                 href="{{ route('StudentHome.index') }}"
+                 @endif
+                 >
+
+              @lang("dashbored")
+               </a>
+               
+                <a class="nav-link" href="{{ route('logout') }}"
+                 onclick="event.preventDefault();
+                     document.getElementById('logout-form').submit();">
+                  @lang("logout")
+                </a>
+        
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+                </form>
+              </div>
+              </li>
+      
+            @endif
+  
+  
+                      </ul>
+  
+         
+            
             <div id="navigation" class="navbar-collapse collapse">
             
             
@@ -71,23 +122,23 @@
               
               <li class="nav-item dropdown "><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">@lang("ofices") <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li class="dropdown-item"><a href="bus" class="nav-link">@lang("Transportation")</a></li>
-                    <li class="dropdown-item"><a href="interviewofice" class="nav-link">@lang("interofice")</a></li>
-                    <li class="dropdown-item"><a href="service" class="nav-link">@lang("helpofice")</a></li>              
+                    <li class="dropdown-item"><a href="/bus" class="nav-link">@lang("Transportation")</a></li>
+                    <li class="dropdown-item"><a href="/interviewofice" class="nav-link">@lang("interofice")</a></li>
+                    <li class="dropdown-item"><a href="/service" class="nav-link">@lang("helpofice")</a></li>              
                   
 
                   </ul>
 
-              <li class="nav-item  "><a href="club" > @lang("Summer Club") <b class="caret"></b></a> </li> 
-               <li class="nav-item  "><a href="news" >@lang("Magazine") <b class="caret"></b></a> </li>
+              <li class="nav-item  "><a href="/club" > @lang("Summer Club") <b class="caret"></b></a> </li> 
+               <li class="nav-item  "><a href="/news" >@lang("Magazine") <b class="caret"></b></a> </li>
                  <!-- ========== Contact dropdown ==================-->
                 <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">@lang("Staff") <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                  <li class="dropdown-item"><a href="mangement" class="nav-link">@lang("Administration")</a></li>
-                    <li class="dropdown-item"><a href="kgmang" class="nav-link">@lang("Kindergarten")</a></li>
-                    <li class="dropdown-item"><a href="firstmang" class="nav-link">@lang("Primary School")</a></li>
-                    <li class="dropdown-item"><a href="secondmang" class="nav-link">@lang("Preparatory School")</a></li>
-                    <li class="dropdown-item"><a href="highmang" class="nav-link">@lang("High school")</a></li>
+                  <li class="dropdown-item"><a href="/mangement" class="nav-link">@lang("Administration")</a></li>
+                    <li class="dropdown-item"><a href="/kgmang" class="nav-link">@lang("Kindergarten")</a></li>
+                    <li class="dropdown-item"><a href="/firstmang" class="nav-link">@lang("Primary School")</a></li>
+                    <li class="dropdown-item"><a href="/secondmang" class="nav-link">@lang("Preparatory School")</a></li>
+                    <li class="dropdown-item"><a href="/highmang" class="nav-link">@lang("High school")</a></li>
                                   
 
                   </ul>
@@ -104,7 +155,7 @@
                   </ul>
                 </li>
                
-                 <li class="nav-item "><a href="welcome" >@lang("home") <b class="caret"></b></a> </li>
+                 <li class="nav-item "><a href="/welcome" >@lang("home") <b class="caret"></b></a> </li>
               </ul>
 
               

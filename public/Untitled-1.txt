@@ -1,0 +1,493 @@
+        foreach ($subjects as $subject){
+            foreach ($groups as $group){
+                foreach ($branches as $branch){
+                    $p = Subject::where('id', '=', $subject)->firstOrFail(); 
+                    $g = Group::where('id', '=', $group)->firstOrFail(); 
+                    $b = Branch::where('id', '=', $branch)->firstOrFail(); 
+                    $group_branch_subject_teacher = new Group_branch_subject_teacher();
+                    $group_branch_subject_teacher->teacher_id = $p->teacher_id;
+                    $group_branch_subject_teacher->subject_id = $p->subject_id;
+                    $group_branch_subject_teacher->branch_id = $b->branch_id;
+                    $group_branch_subject_teacher->group_id = $g->group_id;
+                    $group_branch_subject_teacher->save();
+                }
+
+            }
+        }
+
+
+        <?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\DB;
+use App\Subject;
+use App\Branch;
+use App\Group;
+use App\Teacher;
+use Hash;
+use App\Group_branch_subject_teacher;
+
+
+class TeachersController extends Controller
+{
+    public function __construct() {
+       
+
+        $this->middleware('permission:Editor');
+        
+    
+   }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $teacheres = Teacher::all();//Get all Group
+        return view('teacher.index')->with('teacheres', $teacheres);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $subjects = Subject::all();//Get all permissions
+        $branches = Branch::all();
+        $groups = Group::all();
+        return view('teacher.create', ['subjects'=>$subjects, 'branches'=>$branches, 'groups'=>$groups]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name'=>'required',
+            'email'=>'required|unique:teachers',
+            'password'=>'required',
+            'phone'=>'required',
+            
+            
+            ]
+        );
+
+        $name = $request['name'];
+        $email = $request['email'];
+        $password =  Hash::make($request['password']);
+        $phone = $request['phone'];
+        $teacher = new Teacher();
+        $teacher->name = $name;
+        $teacher->email = $email;
+        $teacher->password = $password;
+        $teacher->phone = $phone;
+     
+        $subjects = $request['subjects'];
+        $branches = $request['branches'];
+        $groups = $request['groups'];
+        
+        //dd($subjects);
+
+        $teacher->save();
+      
+        // dd( $subject);
+    //Looping thru selected permissions
+        foreach ($subjects as $subject) {
+            $p = Subject::where('id', '=', $subject)->firstOrFail(); 
+         //Fetch the newly created  and assign permission
+          
+            $teacher = Teacher::where('name', '=', $name)->first(); 
+            $teacher->subjectes()->attach($subject);       
+           
+        }
+        foreach ($groups as $group) {
+            $g = Group::where('id', '=', $group)->firstOrFail(); 
+         //Fetch the newly created  and assign permission
+          
+            $teacher = Teacher::where('name', '=', $name)->first(); 
+            $teacher->groups()->attach($group);       
+           
+        }
+        foreach ($branches as $branch) {
+            $b = Branch::where('id', '=', $branch)->firstOrFail(); 
+         //Fetch the newly created  and assign permission
+          
+            $teacher = Teacher::where('name', '=', $name)->first(); 
+            $teacher->branches()->attach($branch);
+
+        }
+       
+
+        return redirect()->route('teacher.index')
+        ->with('flash_message',
+         'Teacher'. $teacher->name.' added!'); 
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+
+
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $teacher = Teacher::findOrFail($id);
+        $group = Group::all();
+        $subjects = Subject::all();       
+        $branches = Branch::all();
+
+        return view('teacher.edit', compact('teacher', 'group', 'subjects', 'branches'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $teacher = Teacher::findOrFail($id);
+        $teacher->delete();
+
+        $this->validate($request, [
+            'name'=>'required',
+            'email'=>'required|unique:teachers',
+            'password'=>'required',
+            'phone'=>'required',
+            
+            
+            ]
+        );
+
+        $name = $request['name'];
+        $email = $request['email'];
+        $password =  Hash::make($request['password']);
+        $phone = $request['phone'];
+        $teacher = new Teacher();
+        $teacher->name = $name;
+        $teacher->email = $email;
+        $teacher->password = $password;
+        $teacher->phone = $phone;
+     
+        $subjects = $request['subjects'];
+        $branches = $request['branches'];
+        $groups = $request['groups'];
+        
+        //dd($subjects);
+
+        $teacher->save();
+      
+        // dd( $subject);
+    //Looping thru selected permissions
+        foreach ($subjects as $subject) {
+            $p = Subject::where('id', '=', $subject)->firstOrFail(); 
+         //Fetch the newly created  and assign permission
+          
+            $teacher = Teacher::where('name', '=', $name)->first(); 
+            $teacher->subjectes()->attach($subject);
+            dd($teacher);       
+           
+        }
+        foreach ($groups as $group) {
+            $g = Group::where('id', '=', $group)->firstOrFail(); 
+         //Fetch the newly created  and assign permission
+          
+            $teacher = Teacher::where('name', '=', $name)->first(); 
+            $teacher->groups()->attach($group);       
+           
+        }
+        foreach ($branches as $branch) {
+            $b = Branch::where('id', '=', $branch)->firstOrFail(); 
+         //Fetch the newly created  and assign permission
+          
+            $teacher = Teacher::where('name', '=', $name)->first(); 
+            $teacher->branches()->attach($branch);
+
+        }
+
+
+
+
+        return redirect()->route('teacher.index')
+        ->with('flash_message',
+         'Teacher'. $teacher->name.' updated!');
+
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $teacher = Teacher::findOrFail($id);
+        $teacher->delete();
+
+        return redirect()->route('teacher.index')
+            ->with('flash_message',
+             'Teacher deleted!');
+    }
+}
+
+
+
+
+ <div class='form-group'>
+            @lang("Assgin parameters")<hr>
+            @foreach ($groups as $group)
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>                
+            
+                        {{ Form::checkbox('groups[]',  $group->id ) }}       
+                        
+                        {{ Form::label($group->name, ucfirst($group->name))}}
+                        <br>
+
+                    </tr>
+                    <tr>  
+                        <th>@lang("Branches")</th>
+                      </tr>
+                  </thead>
+                 @php
+                    $i = $group->branches()->pluck('name') ;
+                 
+                 @endphp
+               
+               <tbody>
+                @foreach ($i as $branch)
+                <tr>
+                    <td>
+                 @php
+                   $user_name = App\Branch::where('name', $branch)->get()->first()->name;
+                   $user_id = App\Branch::where('name', $branch)->get()->first()->id;
+                    
+                 @endphp
+                 <ul>
+                     <li>
+                         {{ Form::checkbox('branches[]',  $user_id ) }}
+                         {{ Form::label($user_name, ucfirst($user_name)) }}
+                     </li>
+                 </ul>
+                   
+                </td>
+              
+            </tr>
+                @endforeach
+               </tbody>               
+            </table>
+
+            <table class="table table-bordered table-striped">
+
+                <thead>
+                    
+                    <tr>  
+                        <th>@lang("Subjects")</th>
+                      </tr>
+                  </thead>
+                  @php
+                  $s = $group->subjectes()->pluck('name') ;
+               
+               @endphp
+           
+
+<tbody>
+    @foreach ($s as $subject)
+    
+    <tr>
+        <td>
+     @php
+       $subject_name = App\Subject::where('name', $subject)->get()->first()->name;
+    
+       $subject_id = App\Subject::where('name', $subject)->get()->first()->id;
+     
+     @endphp
+     <ul>
+
+         <li>
+            {{ Form::checkbox('subjects[]',  $subject_id ) }}
+   
+            {{ Form::label($subject_name, ucfirst($subject_name)) }}<br>
+
+         </li>
+     </ul>
+       
+    </td>
+  
+</tr>
+    @endforeach
+   </tbody>   
+
+            </table>
+              
+            @endforeach
+        </div>
+           
+
+         
+
+
+    
+		   
+		 
+
+  
+   <h5><b>@lang("Assign Subjects")</b></h5>
+	   <div class='form-group'>
+		@foreach ($subjects as $subject)
+		
+			{{ Form::checkbox('subjects[]',  $subject->id ) }}
+			{{ Form::label($subject->name, ucfirst($subject->name)) }}<br>
+
+		@endforeach
+    </div>
+    
+    <h5><b>@lang("Assign Branches")</b></h5>
+    <div class='form-group'>
+     @foreach ($branches as $branch)
+     
+         {{ Form::checkbox('branches[]',  $branch->id ) }}
+         {{ Form::label($branch->name, ucfirst($branch->name)) }}<br>
+
+     @endforeach
+ </div>
+
+ <h5><b>@lang("Assign Classes")</b></h5>
+    <div class='form-group'>
+     @foreach ($group as $group)
+     
+         {{ Form::checkbox('groups[]',  $group->id ) }}
+         {{ Form::label($group->name, ucfirst($group->name)) }}<br>
+
+     @endforeach
+ </div>
+         
+
+
+
+
+
+
+
+
+
+		 {{ Form::open(array('url' => 'teacher', 'method' => 'POST'))}}	
+
+    
+             
+
+
+
+
+
+
+
+
+
+
+             <div class='form-group'>
+                @lang("Assgin parameters")<hr>
+               
+                @foreach ($groups as $group)
+                   
+                
+                            {{ Form::checkbox('groups[]',  $group->id ) }}       
+                            
+                            {{ Form::label($group->name, ucfirst($group->name))}}
+                            <br>
+    
+                          @lang("Branches")
+           
+              
+                     @php
+                        $i = $group->branches()->pluck('name') ;
+                     
+                     @endphp
+
+                    @foreach ($i as $branch)
+
+                     @php
+                       $user_name = App\Branch::where('name', $branch)->get()->first()->name;
+                       $user_id = App\Branch::where('name', $branch)->get()->first()->id;
+                        
+                     @endphp
+                     <ul>
+                       
+                             {{ Form::checkbox('branches[]',  $user_id ) }}
+                             {{ Form::label($user_name, ucfirst($user_name)) }}
+                         
+                     </ul>
+               
+                    @endforeach
+ 
+                      @lang("Subjects")
+      
+               
+                      @php
+                      $s = $group->subjectes()->pluck('name') ;
+                   
+                   @endphp
+               
+ 
+        @foreach ($s as $subject)
+
+         @php
+           $subject_name = App\Subject::where('name', $subject)->get()->first()->name;
+        
+           $subject_id = App\Subject::where('name', $subject)->get()->first()->id;
+         
+         @endphp
+         <ul>
+    
+             <li>
+                {{ Form::checkbox('subjects[]',  $subject_id ) }}
+       
+                {{ Form::label($subject_name, ucfirst($subject_name)) }}<br>
+    
+             </li>
+         </ul>
+           
+   
+        @endforeach
+ 
+
+                  
+                @endforeach
+            </div>
+               
+    
+         
+	
+            {{Form::submit('Add', array('class' => 'btn btn-primary')) }}
+            {{ Form::close() }}
+         </div>
+    </div>
+</div>

@@ -89,11 +89,13 @@
              </a>
            </li>
            <li class="nav-item ">
-             <a class="nav-link" href="permissions">
+             <a class="nav-link" href="{{route('permissions.index')}}">
                <i class="material-icons">content_paste</i>
                <p>@lang("Permissions")</p>
              </a>
            </li>
+
+           
            
          </ul>
        </div>
@@ -121,14 +123,14 @@
 
                <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  {{ Auth::user()->name }} <span class="caret"></span>
+                    {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
   
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <a class="nav-link" href="{{ route('logout') }}"
+                  <a style="text-align:center;" class="nav-link" href="{{ route('logout') }}"
                      onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
+                      @lang("logout")
                   </a>
   
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

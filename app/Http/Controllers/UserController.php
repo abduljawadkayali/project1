@@ -22,10 +22,10 @@ class UserController extends Controller {
 
 
     public function __construct() {
-        $this->middleware(['auth', 'isAdmin']); //isAdmin middleware lets only users with a //specific permission permission to access these resources
+         $this->middleware(['auth', 'isAdmin']); //isAdmin middleware lets only users with a //specific permission permission to access these resources
 
-         $this->middleware('permission:EditUser')->only(['edit','update']);
-         $this->middleware('permission:AddUser')->only(['create','store']);
+         $this->middleware('permission:Administer roles & permissions')->only(['edit','update']);
+         $this->middleware('permission:Administer roles & permissions')->only(['create','store']);
     }
 
  
@@ -36,6 +36,7 @@ class UserController extends Controller {
     */
     public function index() {
     //Get all users and pass it to the view
+    
         $users = User::all(); 
         return view('users.index')->with('users', $users);
     }
@@ -123,12 +124,11 @@ class UserController extends Controller {
     //Validate name, email and password fields    
         $this->validate($request, [
             'name'=>'required|max:120',
-            'email'=>'required|email|unique:users,email,'.$id,
-            'password'=>'required|min:6|confirmed'
+            'email'=>'required|email|unique:users,email,'.$id
+            
         ]);
-        $input = $request->only(['name', 'email', 'password']); //Retreive the name, email and password fields
+        $input = $request->only(['name', 'email']); //Retreive the name, email and password fields
         
-        $input['password']=Hash::make($input['password']);
        // dd($request->all());
        //die($request->password);
         $roles = $request['roles']; //Retreive all roles

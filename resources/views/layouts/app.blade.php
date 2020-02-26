@@ -46,8 +46,11 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
-   
+	<!-- Styles -->
+	<style>
+	*{
+		letter-spacing: 0!important;
+	   }</style>
 </head>
 <body>
 	<header class="nav-holder make-sticky">
@@ -60,36 +63,59 @@
 			
 			<div class="container-fluid">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-						@guest
+					<ul class="navbar-nav mr-auto">
+						@if(!(Auth::guard('web')->check() || Auth::guard('teachers')->check() ||Auth::guard('students')->check()))
 						<li class="nav-item">
-							
-							<li class="nav-item login"><a href="{{ route('login') }}" class="login-btn"><i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block"> @lang("Login")</span> <b class="caret"></b></a> </li>    
-							<li class="nav-item login"><a href="{{ route('register') }}" class="login-btn"><i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block"> @lang("sign up")</span> <b class="caret"></b></a> </li>    
+						  
+						  <li class="nav-item login"><a href="/Student/StudentLogin" class="login-btn"><i class="fa fa-sign-in"></i>@lang("Login")<span class="d-none d-md-inline-block"> </span> <b class="caret"></b></a> </li>    
+					
 						</li>
 						
-					@else
-						<li class="nav-item dropdown">
-							<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-								{{ Auth::user()->name }} <span class="caret"></span>
-							</a>
-
-							<div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-								<a class="nav-link" href="{{ route('logout') }}"
-								   onclick="event.preventDefault();
-												 document.getElementById('logout-form').submit();">
-									{{ __('Logout') }}
-								</a>
-
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-									@csrf
-								</form>
-							</div>
+					  @else
+					  <li class="nav-item dropdown">
+						<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+						  @if(Auth::guard('web')->check())
+						  {{ Auth::user()->name }}
+						  @elseif(Auth::guard('teachers')->check())
+						  {{ Auth::guard('teachers')->user()->name }}
+						  @elseif(Auth::guard('students')->check())
+						  {{ Auth::guard('students')->user()->name }}
+						  @endif
+						  
+						  <span class="caret"></span>
+						</a>
+				  
+						<div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+						 
+						  <a class="nav-link"
+						  @if(Auth::guard('web')->check())
+						  href="{{ route('login') }}"
+						   @elseif(Auth::guard('teachers')->check())
+						   href="{{ route('TeacherHome.index') }}"
+						   @elseif(Auth::guard('students')->check())
+						   href="{{ route('StudentHome.index') }}"
+						   @endif
+						   >
+		  
+						@lang("dashbored")
+						 </a>
+						 
+						  <a class="nav-link" href="{{ route('logout') }}"
+						   onclick="event.preventDefault();
+							   document.getElementById('logout-form').submit();">
+							@lang("logout")
+						  </a>
+				  
+						  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+						  @csrf
+						  </form>
+						</div>
 						</li>
-					@endguest
-
-
-                    </ul>
+				
+					  @endif
+			
+			
+								</ul>
 
 					<!-- Right Side Of Navbar -->
 					<div id="navigation" class="navbar-collapse collapse">
@@ -135,7 +161,7 @@
 							</ul>
 						  </li>
 						 
-						   <li class="nav-item "><a href="/welcome" >@lang("home") <b class="caret"></b></a> </li>
+						   <li class="nav-item "><a href="/" >@lang("home") <b class="caret"></b></a> </li>
 						</ul>
 		  
 						

@@ -44,8 +44,8 @@
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>@lang("Quick links")</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="/conectus">@lang("Connect us")<i class="fa fa-angle-double-left"></i></a></li>
-						<li><a href="home">@lang("Login")<i class="fa fa-angle-double-left"></i></a></li>
+						
+						<li><a href="/login">@lang("Login")<i class="fa fa-angle-double-left"></i></a></li>
 						<li><a href="https://www.facebook.com/jilalmostakkball">@lang("facebook")<i class="fa fa-angle-double-left"></i></a></li>
 						<li><a href=" https://wa.me/00963945358474 ">@lang("whatsup") <i class="fa fa-angle-double-left"></i></a></li>
 						<li><a href="https://www.youtube.com/channel/UC7JtujK1MO3aFkijueKRG-g ">@lang("youtube")<i class="fa fa-angle-double-left"></i></a></li>
@@ -54,21 +54,21 @@
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>@lang("Quick links")</h5>
 					<ul class="list-unstyled quick-links">
-				    	<li><a href="highschool">@lang("High school")<i class="fa fa-angle-double-left"></i></a></li>
-						<li><a href="bus">@lang("Transportation")<i class="fa fa-angle-double-left"></i></a></li>
-						<li><a href="news">@lang("Magazine")<i class="fa fa-angle-double-left"></i></a></li>
-						<li><a href="club">@lang("Summer Club")<i class="fa fa-angle-double-left"></i></a></li>
-						<li><a href="aboutus">@lang("About Us")<i class="fa fa-angle-double-left"></i></a></li>
+				    	<li><a href="/highschool">@lang("High school")<i class="fa fa-angle-double-left"></i></a></li>
+						<li><a href="/bus">@lang("Transportation")<i class="fa fa-angle-double-left"></i></a></li>
+						<li><a href="/news">@lang("Magazine")<i class="fa fa-angle-double-left"></i></a></li>
+						<li><a href="/club">@lang("Summer Club")<i class="fa fa-angle-double-left"></i></a></li>
+					
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>@lang("Quick links")</h5>
 					<ul class="list-unstyled quick-links">
-					    <li><a href="/home">@lang("home")<i class="fa fa-angle-double-left"></i></a></li>
-						<li><a href="mangement">@lang("Administration")<i class="fa fa-angle-double-left"></i></a></li>
-						<li><a href="kg">@lang("Kindergarten")<i class="fa fa-angle-double-left"></i></a></li>
-						<li><a href="firstschool">@lang("Primary School")<i class="fa fa-angle-double-left"></i></a></li>
-						<li><a href="secschool">@lang("Preparatory School")<i class="fa fa-angle-double-left"></i></a></li>
+					    <li><a href="/welcome">@lang("home")<i class="fa fa-angle-double-left"></i></a></li>
+						
+						<li><a href="/kg">@lang("Kindergarten")<i class="fa fa-angle-double-left"></i></a></li>
+						<li><a href="/firstschool">@lang("Primary School")<i class="fa fa-angle-double-left"></i></a></li>
+						<li><a href="/secschool">@lang("Preparatory School")<i class="fa fa-angle-double-left"></i></a></li>
 						
 					</ul>
 				</div>
@@ -77,21 +77,25 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
 						<li class="list-inline-item"><a href="https://www.facebook.com/jilalmostakkball"; target="_blank"><i class="fa fa-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"; target="_blank"><i class="fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"; target="_blank"><i class="fa fa-instagram"></i></a></li>
+					
 						<li class="list-inline-item"><a href="https://www.youtube.com/channel/UC7JtujK1MO3aFkijueKRG-g"; target="_blank"><i class="fa fa-youtube-play"></i></a></li>
 						<li class="list-inline-item"><a href=" https://wa.me/00963945358474"; target="_blank"><i class="fa fa-whatsapp"></i></a></li>
 						
 					</ul>
 				</div>
-				</hr>
-			</div>	
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-					
-					<p class="h6">jilalmostakkball School &copy All right Reversed  Devloped by KAYALI.A </p>
+			
+				</div>	
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+						<h4>	
+					@lang("jilalmostakkball School" )&copy @lang("All right Reversed") 
+						</h4>
+					<h4>
+					<a href=" https://wa.me/00905358840111"; target="_blank" style="text-decoration: underline!important;">@lang("Abduljawad KAYALI")</a></li>
+					@lang("designed by")
+					</h4>
 				</div>
-				</hr>
+			
 			</div>	
 		</div>
 	</section>

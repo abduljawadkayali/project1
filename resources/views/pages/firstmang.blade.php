@@ -57,252 +57,41 @@ body {
 <div class="container">
     <div class="row text-center">
 
-
-
+        
+        @foreach($data as $errors)
     <!-- Team item -->
-    <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-
-        <!-- Team item -->
         <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
+            <div class="bg-white rounded shadow-sm py-5 px-4">
+          
+                <img src="{{ URL::to('/') }}/images/{{ $errors->image }}" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
+                <h5 class="mb-0">{!! $errors->name !!}</h5><span class="small text-uppercase text-muted">{!! $errors->job !!}</span>
+                <p>{!! $errors->description !!}</p>
                 <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                    @if($row->mail != '0')  
+                    <li class="list-inline-item"><a href="mailto:{!! $row->mail !!}" class="social-link"><i class="fa fa-envelope"></i></a></li>
+                    
+                    @endif
+                    @if($row->facebook != '0')  
+                    <li class="list-inline-item"><a href="{{ $row->facebook }}" class="social-link"><i class="fa fa-facebook"></i></a></li>
+                    
+                    @endif
+
+                    @if($row->whatsup != '0')  
+                    <li class="list-inline-item"><a href="https://wa.me/{{ $row->whatsup }}" class="social-link"><i class="fa fa-whatsapp"></i></a></li>
+                    
+                    @endif
+                    
+                    
+ 
+                    
+                    
                 </ul>
             </div>
         </div><!-- End -->
+        @endforeach
+        {!! $errors->title !!}
 
-
-        <!-- Team item -->
-        <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-
-
-        <!-- Team item -->
-        <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-
-
-        <!-- Team item -->
-        <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-
-        <!-- Team item -->
-        <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-
-
-        <!-- Team item -->
-        <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-
-
-        <!-- Team item -->
-        <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-
-
-        <!-- Team item -->
-        <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-
-
-        <!-- Team item -->
-        <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-
-
-        <!-- Team item -->
-        <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-
-        <!-- Team item -->
-        <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-
-        <!-- Team item -->
-        <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-    
-
-       <!-- Team item -->
-       <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-      <!-- Team item -->
-      <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
-
-        <!-- Team item -->
-        <div class="col-xl-4 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-7.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
-                <h5 class="mb-0">Manuella Nevoresky</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
-                <p>Manuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella NevoreskyManuella Nevoresky</p>
-                <ul class="social mb-0 list-inline mt-3">
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div><!-- End -->
+      
 
 
     </div>
@@ -310,4 +99,50 @@ body {
 
 
 @include ('includes.footer')
+
+{!! $data->links() !!}
+
+
+        
+
+                
+            </p>
+        </div>
+    </div>
+</div><!-- End -->
+
+
+<div class="container">
+    <div class="row text-center">
+
+
+        @foreach($data as $errors)
+    <!-- Team item -->
+        <div class="col-xl-4 col-sm-6 mb-5">
+            <div class="bg-white rounded shadow-sm py-5 px-4">
+          
+                <img src="{{ URL::to('/') }}/images/{{ $errors->image }}" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"> 
+                <h5 class="mb-0">{!! $errors->name !!}</h5><span class="small text-uppercase text-muted">{!! $errors->job !!}</span>
+                <p>{!! $errors->description !!}</p>
+                <ul class="social mb-0 list-inline mt-3">
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href=" https://wa.me/00963945358474" class="social-link"><i class="fa fa-whatsapp"></i></a></li>
+                </ul>
+            </div>
+        </div><!-- End -->
+        @endforeach
+        {!! $errors->title !!}
+
+      
+
+
+    </div>
+</div>
+
+
+@include ('includes.footer')
+
+{!! $data->links() !!}
 

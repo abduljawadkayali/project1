@@ -3,81 +3,175 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Crud;
+use App\Post;
+use App\Staff;
 class PagesController extends Controller
 {
+
+    public function welcome()
+    {
+
+        $data = Crud::where('web_page', '1')->paginate(50);
+        $dataText = Post::where('page', '1')->paginate(50);
+        $post = Post::latest()->where('page', '0')->paginate(50);
+        return view('pages.welcome', compact('data', 'dataText', 'post'))
+                ->with('i', (request()->input('page', 1) - 1) * 50);
+
+    }
     public function home(){
         return view('home');
     }
 
-    public function welcome(){
-        return view('pages.welcome');
+    public function kg()
+    {
+
+        $data = Crud::where('web_page', '2')->paginate(50);
+        $dataText = Post::where('page', '2')->paginate(50);
+
+        return view('pages.kg', compact('data', 'dataText'))
+                ->with('i', (request()->input('page', 1) - 1) * 50);
+
     }
 
-    public function kg(){
-        return view('pages.kg');
+    public function firstschool()
+    {
+
+        $data = Crud::where('web_page', '3')->paginate(50);
+        $dataText = Post::where('page', '3')->paginate(50);
+
+        return view('pages.firstschool', compact('data', 'dataText'))
+                ->with('i', (request()->input('page', 1) - 1) * 50);
+
     }
 
-    public function firstschool(){
-        return view('pages.firstschool');
-    }
-    
-    public function secschool(){
-        return view('pages.secschool');
+
+    public function secschool()
+    {
+
+        $data = Crud::where('web_page', '4')->paginate(50);
+        $dataText = Post::where('page', '4')->paginate(50);
+        return view('pages.secschool', compact('data', 'dataText'))
+                ->with('i', (request()->input('page', 1) - 1) * 50);
+
     }
 
-    public function highschool(){
-        return view('pages.highschool');
+    public function highschool()
+    {
+
+        $data = Crud::where('web_page', '5')->paginate(50);
+        $dataText = Post::where('page', '5')->paginate(50);
+        return view('pages.highschool', compact('data', 'dataText'))
+                ->with('i', (request()->input('page', 1) - 1) * 50);
+
     }
+
+
 
     public function login(){
         return view('pages.tstt');
     }
 
     public function mangement(){
-        return view('pages.mangement');
+
+        $data = Staff::where('branch', '11')->paginate(150);
+
+        return view('pages.mangement', compact('data'))
+                ->with('i', (request()->input('page', 1) - 1) * 150);
+
+
     }
 
+
     public function kgmang(){
-        return view('pages.kgmang');
+        $data = Staff::where('branch', '12')->paginate(150);
+        return view('pages.kgmang', compact('data'))
+                ->with('i', (request()->input('page', 1) - 1) * 150);
+
     }
 
     public function firstmang(){
-        return view('pages.firstmang');
+        $data = Staff::where('branch', '13')->paginate(150);
+        return view('pages.firstmang', compact('data'))
+        ->with('i', (request()->input('page', 1) - 1) * 150);
+
     }
 
     public function secondmang(){
-        return view('pages.secondmang');
+        $data = Staff::where('branch', '14')->paginate(150);
+        return view('pages.secondmang', compact('data'))
+        ->with('i', (request()->input('page', 1) - 1) * 150);
+
     }
 
     public function highmang(){
-        return view('pages.highmang');
+        $data = Staff::where('branch', '15')->paginate(150);
+        return view('pages.highmang', compact('data'))
+        ->with('i', (request()->input('page', 1) - 1) * 150);
+
     }
 
-    public function club(){
-        return view('dashbored.rtl');
-    }
-    
-    public function bus(){
-        return view('pages.bus');
+    public function news()
+    {
+
+        $data = Crud::where('web_page', '6')->paginate(50);
+        $dataText = Post::where('page', '6')->paginate(50);
+        return view('pages.news', compact('data', 'dataText'))
+                ->with('i', (request()->input('page', 1) - 1) * 50);
+
     }
 
-    public function service(){
-        return view('pages.service');
+    public function club()
+    {
+
+        $data = Crud::where('web_page', '7')->paginate(50);
+        $dataText = Post::where('page', '7')->paginate(50);
+
+        return view('pages.club', compact('data', 'dataText'))
+                ->with('i', (request()->input('page', 1) - 1) * 50);
+
     }
-    
-    public function interviewofice(){
-        return view('pages.interviewofice');
+
+    public function bus()
+    {
+
+        $data = Crud::where('web_page', '8')->paginate(50);
+        $dataText = Post::where('page', '8')->paginate(50);
+        return view('pages.bus', compact('data', 'dataText'))
+                ->with('i', (request()->input('page', 1) - 1) * 50);
+
     }
+
+    public function service()
+    {
+
+        $data = Crud::where('web_page', '9')->paginate(50);
+        $dataText = Post::where('page', '9')->paginate(50);
+        return view('pages.service', compact('data', 'dataText'))
+                ->with('i', (request()->input('page', 1) - 1) * 50);
+
+    }
+
+
+    public function interviewofice()
+    {
+
+        $data = Crud::where('web_page', '10')->paginate(50);
+        $dataText = Post::where('page', '10')->paginate(50);
+        return view('pages.interviewofice', compact('data', 'dataText'))
+                ->with('i', (request()->input('page', 1) - 1) * 50);
+
+    }
+
 
     public function conectus(){
         return view('pages.conectus');
     }
-  
+
     public function test(){
         return view('pages.test');
     }
-    
-        
-    
+
+
+
 }

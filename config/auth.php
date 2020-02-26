@@ -46,6 +46,14 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'teachers' => [
+            'driver' => 'session',
+            'provider' => 'teachers',
+        ],
+        'students' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ]
     ],
 
     /*
@@ -70,6 +78,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        'teachers' => [
+            'driver' => 'eloquent',
+            'model' => App\TeacherAdmin::class,
+        ],
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\StudentAdmin::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
@@ -95,6 +111,18 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'teachers' => [
+            'provider' => 'teachers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'students' => [
+            'provider' => 'students',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

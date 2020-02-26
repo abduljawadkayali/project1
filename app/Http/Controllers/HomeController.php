@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-       //$this->middleware('auth')->except(["index"]);
+        $this->middleware('auth')->except(["index", "NotLogin"]);
+        $this->middleware('isAdmin')->only(["AdminDashbored"]);
     }
 
     /**
@@ -23,24 +25,47 @@ class HomeController extends Controller
      */
     public function index()
     {
-      dd("this is index funsda"); 
+
        
-      //return view('home');
-       
+        if (Auth::check()){
+            //$this->middleware(['isAdmin']);
+            if (Auth::user()->hasPermissionTo('isAdmin'))
+                return (HomeController::AdminDashbored());
+            elseif (Auth::user()->hasPermissionTo('Designer'))
+                return (HomeController::DesignerDashbored());
+            elseif (Auth::user()->hasPermissionTo('Editor'))
+                return (HomeController::EditorDashbored());
+            else {
+                Auth::logout();
+                return (HomeController::NotLogin());
+            }
+        }
+        else
+            return (HomeController::NotLogin());
+
+
     }
 
-    public function Dashbored()
+    public function NotLogin()
     {
-       dd("this is dashbored funsda");
+        return redirect()->action('PagesController@welcome');
     }
 
     public function AdminDashbored()
     {
-       
+        return redirect()->route('users.index');
+       // dd("admin");
+        //return view('users');
     }
 
-    public function NotAdminDashbored()
+    public function DesignerDashbored()
     {
-       
+        
+        return redirect()->route('crud.create');
+    }
+    public function EditorDashbored()
+    {
+        
+        return redirect()->route('AddStudent');
     }
 }

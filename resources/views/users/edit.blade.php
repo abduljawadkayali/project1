@@ -10,7 +10,7 @@
     </style>
 
 
-@section('title', '| Edit User')
+
 
 @section('content')
  <div class="row">
@@ -18,7 +18,7 @@
       <div class="col-sm">
   <div class='col-lg-12 col-lg-offset-12'>
     <h1> 
-    <i class='fa fa-user-plus'></i>
+    <i class='fa fa-edit'></i>
     @lang("Edit"){{$user->name}} </h1>
     <hr>
 
@@ -46,21 +46,6 @@
         @endforeach
     </div>
 
-    <div class="form-group">
-            <!-- {{ Form::label('password', 'Password') }}-->
-            @lang("Password")
-                  <br>
-        {{ Form::password('password', array('class' => 'form-control')) }}
-
-    </div>
-
-    <div class="form-group">
-                 <!--  {{ Form::label('password', 'Confirm Password') }}-->
-                 @lang("Confirm Password")
-                 <br>
-        {{ Form::password('password_confirmation', array('class' => 'form-control')) }}
-
-    </div>
 
     {{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
 

@@ -27,8 +27,8 @@ class CreateUsersTable extends Migration
         $user->name="asd";
         $user->email="asd@asd.asd";
         $user->password=Hash::make("asdasd");
-       // dd($user);
-        $user->save();
+        $user->save();        
+    
      }
 
     /**

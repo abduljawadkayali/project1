@@ -9,12 +9,16 @@ use App\Post;
 use Auth;
 use Session;
 
-class PostController extends Controller {
+class PostsController extends Controller {
 
+    
     public function __construct() {
-        $this->middleware(['auth', 'clearance'])->except('index', 'show');
-    }
+       
 
+        $this->middleware('permission:Designer')->except(['display']);;
+    
+   }
+   
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +27,18 @@ class PostController extends Controller {
 
 
     public function index() {
-        $posts = Post::orderby('id', 'desc')->paginate(5); //show only 5 items at a time in descending order
+        $dataText = Post::where('page', $id)->paginate(5);
+        return view('post.index', compact('dataText'))
+                ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
 
-        return view('posts.index', compact('posts'));
+    public function text($id)
+    {
+    
+        $dataText = Post::where('page', $id)->paginate(5);
+        return view('post.index', compact('dataText'))
+                ->with('i', (request()->input('page', 1) - 1) * 5);
+                
     }
 
     /**
@@ -34,7 +47,7 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('posts.create');
+        return view('post.create');
     }
 
     /**
@@ -45,33 +58,28 @@ class PostController extends Controller {
      */
     public function store(Request $request) { 
 
-    //Validating title and body field
-        $this->validate($request, [
-            'title'=>'required|max:100',
-            'body' =>'required',
-            ]);
+        $numb=$request->page ;
+        $request->validate([
+            'title'     =>  'required',
+            'page'    =>  'required',
+            'body'     =>  'required'
 
-        $title = $request['title'];
-        $body = $request['body'];
+        ]);
 
-        $post = Post::create($request->only('title', 'body'));
+        
 
-    //Display a successful message upon save
-        return redirect()->route('posts.index')
-            ->with('flash_message', 'Article,
-             '. $post->title.' created');
-    }
+        $form_data = array(
+            'title'        =>   $request->title,
+            'page'       =>   $request->page,
+            'body'        =>   $request->body
+            
+        );
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id) {
-        $post = Post::findOrFail($id); //Find post of id = $id
+        Post::create($form_data);
 
-        return view ('posts.show', compact('post'));
+       
+        return redirect()->action('PostsController@create', ['id' => $numb])->with('success', 'Data Added successfully.');
+ 
     }
 
     /**
@@ -81,10 +89,24 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        $post = Post::findOrFail($id);
+        
+        $dataText = Post::findOrFail($id);
 
-        return view('posts.edit', compact('post'));
+        return view('post.edit', compact('dataText'));
     }
+
+    public function show($id)
+    {
+        $dataText = Post::findOrFail($id);
+        return view('post.view', compact('dataText'));
+    }
+
+    public function display($id)
+    {
+        $post = Post::findOrFail($id);
+        return view('post.show', compact('post'));
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -94,19 +116,28 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        $this->validate($request, [
-            'title'=>'required|max:100',
-            'body'=>'required',
-        ]);
+        $numb=$request->page ;
+      
+     
+        
+            $request->validate([
+                'title'     =>  'required',
+                'page'    =>  'required',
+                
+                'body'     =>  'required'
+            ]);
+      
 
-        $post = Post::findOrFail($id);
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        $post->save();
+        $form_data = array(
+            'title'     =>  $request->title,
+            'page'    =>  $request->page,
+            'body'     =>  $request->body
+        );
 
-        return redirect()->route('posts.show', 
-            $post->id)->with('flash_message', 
-            'Article, '. $post->title.' updated');
+        Post::whereId($id)->update($form_data);
+        return redirect()->action('PostsController@text', ['id' => $numb]);
+
+
 
     }
 
@@ -117,12 +148,10 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $post = Post::findOrFail($id);
-        $post->delete();
-
-        return redirect()->route('posts.index')
-            ->with('flash_message',
-             'Article successfully deleted');
-
+        $dataText = Post::findOrFail($id);
+        $numb=$dataText->page ;
+        
+        $dataText->delete();
+        return redirect()->action('PostsController@text', ['id' => $numb]);
     }
 }
